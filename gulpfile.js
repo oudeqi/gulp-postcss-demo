@@ -28,6 +28,7 @@ var options = minimist(process.argv.slice(2), knownOptions);
 
 var processors = [
 	require('precss'),
+	// require("postcss-color-function"),//提供颜色函数
 	// require('postcss-px-to-viewport')({
 	// 	viewportWidth: 320,
 	// 	viewportHeight: 568,
@@ -42,9 +43,12 @@ var processors = [
 		relative: true
     }),
 	require('postcss-will-change'),//给不支持will-change属性的浏览器触发GPU处理器
-	require('postcss-vmin'),//给不支持vmin的ie9作降级处理、
+	// require('postcss-color-rgba-fallback'),//给不支持rgba的ie8作降级处理
+	// require('postcss-opacity'),//给不支持opacity的ie8作降级处理
+	// require('postcss-pseudoelements'),//给不支持::伪元素的ie8作降级处理
+	// require('postcss-vmin'),//给不支持vmin的ie9作降级处理
 	require('postcss-calc'),//尽可能让calc输出静态的值
-	require("postcss-color-function"),//提供颜色函数
+	require('postcss-at2x'),//retina 2倍图片
 	require('postcss-write-svg'),//在样式表的写svg // TODO 可能要废弃,与cssnano不兼容
 	require('postcss-aspect-ratio-mini'),//长宽比效果
 	// require('postcss-px2rem')({remUnit: 32}),//px转rem

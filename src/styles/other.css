@@ -8,9 +8,32 @@
 	will-change: transform;
 }
 
+/*postcss-color-rgba-fallback IE8不支持rgba()颜色，添加了一个十六进制颜色作为降级处理*/
+.rgbaFallback {
+	background: rgba(0,0,0,0.5);
+}
+
+/*postcss-opacity IE8也不支持opacity属性，给IE浏览器添加滤镜属性，作为降级处理。*/
+.opacityFallback {
+	opacity: 0.5;
+}
+
+/*postcss-pseudoelements 在IE8中仅支持一个冒号:，并不支持::的伪元素*/
+.pseudo-element::before {
+	content: '';
+}
+
 /*postcss-vmin 给不支持vmin的ie9作降级处理,ie9只支持vm*/
 .vmFallback {
 	width: 50vmin;
+}
+
+/*postcss-at2x retina自动使用2倍图片*/
+.multi {
+	background: url(http://example.com/image.png),
+		linear-gradient(to right, rgba(255, 255, 255, 0),  rgba(255, 255, 255, 1)),
+		green,
+		url(/public/images/cool.png) at-2x;
 }
 
 /*
