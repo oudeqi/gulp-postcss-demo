@@ -15,7 +15,13 @@
     <script type="text/javascript" src="./vendor/bootstrap/js/bootstrap.js"></script>
     <!-- endbuild -->
 </head>
-<body>zxczxcxzzxczxczxc
+<body>
+    @@include("./tpls/header.html", {
+        "name": "i am header",
+        "socials": {
+            "fb": "socials.fb"
+        }
+    })
     <div class="svg-background-1px"></div>
     <div class="svg-border-image-1px"></div>
     <div class="test-real-1px"></div>
@@ -36,5 +42,22 @@
     <span class="icon-b-2x"></span>
     <span class="icon-c-2x">x</span>
     <span class="icon-d-2x">x</span>
+-----------------------------------------------------------
+    @@if(hasFooter){
+        @@include("./tpls/footer.html")
+    }
+
+    <ul>
+        @@for(var i = 0; i<arr.length; i++){
+            <li>`+arr[i]+`</li>
+        }
+    </ul>
+
+    @@loop('./tpls/loop.html', [
+        { "title": "My post title", "text": "<div>lorem ipsum...</div>" },
+        { "title": "Another post", "text": "<div>lorem ipsum...</div>" },
+        { "title": "One more post", "text": "<div>lorem ipsum...</div>" }
+    ])
+
 </body>
 </html>

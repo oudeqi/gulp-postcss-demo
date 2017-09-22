@@ -19,6 +19,8 @@ var gulpIgnore = require('gulp-ignore');
 var cssnano = require('cssnano');
 var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
+var fileinclude = require('gulp-file-include');
+
 var knownOptions = {
 	string: 'env',
 	default: { env: process.env.NODE_ENV || 'development' }
@@ -104,6 +106,14 @@ gulp.task('sprite', function () {
 gulp.task('html', function () {
 	return gulp.src('src/*.html')
 	.pipe(gulpif(options.env === 'production', htmlmin(htmlMinOptions))) // TODO
+	.pipe(fileinclude({
+		prefix: '@@',
+		basepath: '@file',
+		context: {
+			hasFooter: true,
+			arr: ['test1', 'test2']
+		}
+	}))
 	.pipe(gulp.dest('dest/'))
 })
 
@@ -155,7 +165,7 @@ gulp.task('default', ['clean'], function () {
 
 gulp.task('dev', ['default']);
 
-gulp.watch('src/*.html', ['html']).on('change', function(event) {
+gulp.watch('src/**/*.html', ['html']).on('change', function(event) {
 	browserSync.reload();
 	console.log('File ' + event.path + ' was ' + event.type + ',running tasks...[html]');
 });
