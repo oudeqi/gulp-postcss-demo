@@ -36,7 +36,6 @@
     "postcss-assets": "^5.0.0",
     "postcss-at2x": "^4.0.2",
     "postcss-calc": "^6.0.0",
-    "postcss-color-function": "^4.0.0",
     "postcss-color-rgba-fallback": "^3.0.0",
     "postcss-functions": "^3.0.0",
     "postcss-mq-keyframes": "^0.3.0",
