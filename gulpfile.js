@@ -30,7 +30,6 @@ var options = minimist(process.argv.slice(2), knownOptions);
 
 var processors = [
 	require('precss'),
-	// require("postcss-color-function"),//提供颜色函数
 	// require('postcss-px-to-viewport')({
 	// 	viewportWidth: 320,
 	// 	viewportHeight: 568,
